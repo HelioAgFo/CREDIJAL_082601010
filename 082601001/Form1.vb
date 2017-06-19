@@ -244,17 +244,19 @@ Friend Class Form1
     End Sub
 
     Private Sub Update1_UpdateEvent(Level As Short, InsertFlg As Short, LevelsDone As Short, LevelsLeft As Short, ByRef RetVal As Short) Handles Update1.UpdateEvent
-        Stop
+        'Stop
         Dim Query As String
 
         If Level = LEVEL0 Then
             '---
-            Query = "select top 1 * from xPld_historia where custid =" + SParm(bxPld.CustId) + " order by xpldHistoriaId desc"
+            'Query = "select top 1 * from xPld_historia where custid =" + SParm(bxPld.CustId) + " order by xpldHistoriaId desc"
+            Query = "select top 1 * from xPld_historia order by xpldHistoriaId desc"
             Call sql(CSR_xPld_historia, Query)
             serr1 = SFetch1(CSR_xPld_historia, bxPld_historia)
             If serr1 = NOTFOUND Then
+                bxPld.s4Future10 = 2
             Else
-                bxPld.s4Future09 = bxPld_historia.xpldHistoriaId + 1
+                bxPld.s4Future10 = bxPld_historia.xpldHistoriaId + 2
             End If
             '---
             Query = "Select * from xPld where custid = " + SParm(RTrim(bxPld.CustId))
