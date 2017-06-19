@@ -43,6 +43,8 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cClave_0 = New Interop.SAF.SAFMaskedText()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cQuienAutorizo_0 = New Interop.SAF.SAFMaskedText()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.cRiesgoDC_0 = New Interop.SAF.SAFCombo()
         Me.cClasifPEP_0 = New Interop.SAF.SAFCombo()
         Me.cManEfec_0 = New Interop.SAF.SAFCheck()
@@ -74,8 +76,6 @@ Partial Class Form1
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.cQuienAutorizo_0 = New Interop.SAF.SAFMaskedText()
         CType(Me.Update1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.cStatus_0, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,6 +83,7 @@ Partial Class Form1
         CType(Me.cCustid_0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cClave_0, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.cQuienAutorizo_0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cRiesgoDC_0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cClasifPEP_0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cManEfec_0, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,7 +100,6 @@ Partial Class Form1
         CType(Me.cMontoEfeMen_0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cNumeroEdMM_0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cMontoEstMM_0, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cQuienAutorizo_0, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Update1
@@ -230,6 +230,23 @@ Partial Class Form1
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "PLD(Prevencion y lavado de dinero)"
+        '
+        'cQuienAutorizo_0
+        '
+        Me.cQuienAutorizo_0.Location = New System.Drawing.Point(600, 45)
+        Me.cQuienAutorizo_0.Name = "cQuienAutorizo_0"
+        Me.cQuienAutorizo_0.OcxState = CType(resources.GetObject("cQuienAutorizo_0.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.cQuienAutorizo_0.Size = New System.Drawing.Size(200, 24)
+        Me.cQuienAutorizo_0.TabIndex = 18
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(560, 60)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(118, 17)
+        Me.Label19.TabIndex = 17
+        Me.Label19.Text = "¿Quien Autorizo?"
         '
         'cRiesgoDC_0
         '
@@ -493,23 +510,6 @@ Partial Class Form1
         Me.Label16.TabIndex = 0
         Me.Label16.Text = "Monto estimado de movimientos mensuales"
         '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(560, 60)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(118, 17)
-        Me.Label19.TabIndex = 17
-        Me.Label19.Text = "¿Quien Autorizo?"
-        '
-        'cQuienAutorizo_0
-        '
-        Me.cQuienAutorizo_0.Location = New System.Drawing.Point(600, 45)
-        Me.cQuienAutorizo_0.Name = "cQuienAutorizo_0"
-        Me.cQuienAutorizo_0.OcxState = CType(resources.GetObject("cQuienAutorizo_0.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.cQuienAutorizo_0.Size = New System.Drawing.Size(200, 24)
-        Me.cQuienAutorizo_0.TabIndex = 18
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -531,6 +531,7 @@ Partial Class Form1
         CType(Me.cClave_0, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.cQuienAutorizo_0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cRiesgoDC_0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cClasifPEP_0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cManEfec_0, System.ComponentModel.ISupportInitialize).EndInit()
@@ -548,7 +549,6 @@ Partial Class Form1
         CType(Me.cMontoEfeMen_0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cNumeroEdMM_0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cMontoEstMM_0, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cQuienAutorizo_0, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

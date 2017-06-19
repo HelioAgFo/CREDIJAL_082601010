@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="xnew_paisbase.DH.VB" />
     <Compile Include="xPLD.DH.VB" />
+    <Compile Include="xPld_historia.DH.VB" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">

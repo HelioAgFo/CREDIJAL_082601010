@@ -23,12 +23,15 @@ Friend Class Form1
     Dim RiesgoAnterior As String
     Dim FechaAnterior As String
     Dim UsuarioAnterior As String
+    Dim Consecutivo As Integer
+    Dim QuienAAnterior As String
 
     Private Sub Form1_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load
 
 
         Call ApplInit()
         Call Init_xPld(LEVEL0, True)
+        Call Init_xPld_historia(LEVEL1, True)
 
 
         Call ScreenInit()
@@ -41,6 +44,7 @@ Friend Class Form1
             .Start()
         End With
 
+        cQuienAutorizo_0.Enabled = "False"
 
 
     End Sub
@@ -259,6 +263,14 @@ Friend Class Form1
                 End Try
             Else
                 Try
+                    With bxPld
+                        .Crtd_DateTime = bpes.Today
+                        .Crtd_Prog = bpes.ScrnNbr
+                        .Crtd_User = bpes.UserId
+                        .Lupd_DateTime = bpes.Today
+                        .Lupd_Prog = bpes.ScrnNbr
+                        .Lupd_User = bpes.UserId
+                    End With
                     Call TranBeg(True)
                     Call SUpdate1(CSR_xPld, "xPld", bxPld) 'Actualiza
                 Catch ex As Exception
@@ -267,6 +279,66 @@ Friend Class Form1
                     TranEnd()
                 End Try
             End If
+
+            Query = "select top 1 * from xPld_historia order by xpldHistoriaId desc"
+            Call sql(CSR_xPld_historia, Query)
+            serr1 = SFetch1(CSR_xPld_historia, bxPld_historia)
+
+            If serr1 = NOTFOUND Then
+                Consecutivo = 1
+            Else
+                Consecutivo = bxPld_historia.xpldHistoriaId + 1
+            End If
+
+            If RiesgoAnterior <> " " Then
+                Try
+                    'Se inicializa buffer de xPld_Historia
+                    With bxPld_historia
+                        .Autorizo = " "
+                        .Crtd_DateTime = bpes.Today
+                        .Crtd_Prog = bpes.ScrnNbr
+                        .Crtd_User = bpes.UserId
+                        .CustId = bxPld.CustId
+                        .Lupd_DateTime = FechaAnterior
+                        .Lupd_Prog = bpes.ScrnNbr
+                        .Lupd_User = UsuarioAnterior
+                        .s4Future01 = " "
+                        .s4future02 = " "
+                        .s4Future03 = "0 "
+                        .s4Future04 = "0 "
+                        .s4Future05 = "0 "
+                        .s4Future06 = "0 "
+                        .s4Future07 = 0
+                        .s4Future08 = 0
+                        .s4Future09 = 0
+                        .s4Future10 = 0
+                        .s4future11 = " "
+                        .s4Future12 = " "
+                        .TipodeRiesgo = RiesgoAnterior
+                        .User1 = QuienAAnterior
+                        .User2 = " "
+                        .User3 = 0
+                        .User4 = 0
+                        .User5 = " "
+                        .User6 = " "
+                        .User7 = 0
+                        .User8 = 0
+                        .xpldHistoriaId = Consecutivo
+                    End With
+
+                    Call TranBeg(True)
+                    Call SInsert1(CSR_xPld_historia, "xPld_historia", bxPld_historia) 'Inserta
+                    RiesgoAnterior = " "
+                    FechaAnterior = " "
+                    UsuarioAnterior = " "
+                    cQuienAutorizo_0.Enabled = "False"
+                Catch ex As Exception
+                    TranAbort()
+                Finally
+                    TranEnd()
+                End Try
+            End If
+
             bxPld2 = nxPld
             RetVal = NoAction
 
@@ -357,14 +429,23 @@ Friend Class Form1
         RiesgoAnterior = bxPld.RiesgoDC
         FechaAnterior = bxPld.Crtd_DateTime
         UsuarioAnterior = bxPld.Crtd_User
+        QuienAAnterior = bxPld.User1
+
         'SetProps("xPedido", PROP_BLANKERR, False)
         bxPld.User1 = " "
-        SetObjectValue(cQuienAutorizo_0, " ")
+        cQuienAutorizo_0.Enabled = "True"
+        'SetObjectValue(cQuienAutorizo_0, " ")
         cQuienAutorizo_0.Blankerr = "True"
-        RetVal = ErrNoMess
+        'RetVal = NoAction
+
+        
+
 
 
     End Sub
 
 
+    Private Sub cQuienAutorizo_0_ChkEvent(ByRef ChkStrg As String, ByRef RetVal As Short) Handles cQuienAutorizo_0.ChkEvent
+
+    End Sub
 End Class
