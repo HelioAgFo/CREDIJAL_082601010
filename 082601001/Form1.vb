@@ -20,6 +20,10 @@ Friend Class Form1
 		End Get
 	End Property
 
+    Dim RiesgoAnterior As String
+    Dim FechaAnterior As String
+    Dim UsuarioAnterior As String
+
     Private Sub Form1_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles MyBase.Load
 
 
@@ -347,4 +351,20 @@ Friend Class Form1
             End If
         End If
     End Sub
+
+    Private Sub cRiesgoDC_0_ChkEvent(ByRef ChkStrg As String, ByRef RetVal As Short) Handles cRiesgoDC_0.ChkEvent
+        'Stop
+        RiesgoAnterior = bxPld.RiesgoDC
+        FechaAnterior = bxPld.Crtd_DateTime
+        UsuarioAnterior = bxPld.Crtd_User
+        'SetProps("xPedido", PROP_BLANKERR, False)
+        bxPld.User1 = " "
+        SetObjectValue(cQuienAutorizo_0, " ")
+        cQuienAutorizo_0.Blankerr = "True"
+        RetVal = ErrNoMess
+
+
+    End Sub
+
+
 End Class
